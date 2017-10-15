@@ -1,15 +1,15 @@
 build:
-	@docker-compose -p jenkins2 build
-	@docker-compose -p jenkins2 pull proxy
+	@docker-compose -p jfarm build
+	@docker-compose -p jfarm pull proxy
 run:
 	@./setlocation.sh
-	@docker-compose -p jenkins2 up -d nginx data master proxy
+	@docker-compose -p jfarm up -d nginx data master proxy
 stop:
-	@docker-compose -p jenkins2 stop
+	@docker-compose -p jfarm stop
 clean:	stop
-	@docker-compose -p jenkins2 rm master nginx proxy
+	@docker-compose -p jfarm rm master nginx proxy
 clean-data: clean
-	@docker-compose -p jenkins2 rm -v data
+	@docker-compose -p jfarm rm -v data
 clean-images:
 	@docker rmi `docker images -q -f "dangling=true"`
 

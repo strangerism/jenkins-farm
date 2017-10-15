@@ -56,7 +56,7 @@ RUN mkdir -p /usr/share/jenkins/ref/init.groovy.d
 # Install Jenkins
 RUN curl -fL http://repo.jenkins-ci.org/public/org/jenkins-ci/main/jenkins-war/${JENKINS_VERSION}/jenkins-war-${JENKINS_VERSION}.war -o /usr/share/jenkins/jenkins.war
 
-ENV JAVA_OPTS="-Xmx8192m"
+ENV JAVA_OPTS="-Xmx8192m -Djenkins.slaves.DefaultJnlpSlaveReceiver.disableStrictVerification=true"
 ENV JENKINS_OPTS="--logfile=/var/log/jenkins/jenkins.log  --webroot=/var/cache/jenkins/war"
 
 # Prep Jenkins Directories

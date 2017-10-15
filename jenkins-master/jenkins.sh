@@ -33,7 +33,7 @@ sed -i "s/<serverUrl>.*<\/serverUrl>/<serverUrl>tcp:\/\/$MYLOC:3375\/<\/serverUr
 
 # if `docker run` first argument start with `--` the user is passing jenkins launcher arguments
 if [[ $# -lt 1 ]] || [[ "$1" == "--"* ]]; then
-   exec java $JAVA_OPTS -Djenkins.install.runSetupWizard=false -Djenkins.slaves.DefaultJnlpSlaveReceiver.disableStrictVerification=true -jar /usr/share/jenkins/jenkins.war $JENKINS_OPTS "$@"
+   exec java $JAVA_OPTS -Djenkins.install.runSetupWizard=false -jar /usr/share/jenkins/jenkins.war $JENKINS_OPTS "$@"
 fi
 
 # As argument is not jenkins, assume user want to run his own process, for sample a `bash` shell to explore this image
