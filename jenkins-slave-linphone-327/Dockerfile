@@ -8,9 +8,10 @@ RUN useradd jenkins -m -s /bin/bash
 RUN chown -R jenkins /home/jenkins
 RUN chgrp -R jenkins /home/jenkins
 
-# Add the jenkins user to sudoers
-#RUN echo "jenkins    ALL=(ALL)    ALL" >> etc/sudoers
+# add jenkins to the android user group from android-sdk-linphone-327 image
+RUN usermod -a -G android jenkins
 
+# switch to jenkins user
 USER jenkins
 
 # Expose user HOME to docker build environment
