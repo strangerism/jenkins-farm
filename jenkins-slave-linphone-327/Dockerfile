@@ -18,7 +18,7 @@ USER jenkins
 ENV USER_HOME /home/jenkins
 
 # Make easy access to build files for local development and testing
-VOLUME $USER_HOME
+# VOLUME $USER_HOME
 
 WORKDIR $USER_HOME
 
